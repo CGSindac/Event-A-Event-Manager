@@ -1,0 +1,49 @@
+{% extends "layout.html "%}
+
+{% block body %}
+    <h1>Create / Host an Event</h1>
+
+    {% if errors %}
+        {% for key, value in errors.items() %}
+            {% if value == true %}
+            <div class="error-container">
+                <div class="error-notif">
+                     <p><i>Missing Value: {{ key }}</i></p>
+                </div>
+            </div> 
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    
+    
+
+    <form action="/create" method="post">
+        <div class="form-field">
+            <label for="event_name">Event Name</label>
+            <input name="event_name" autocomplete="off" type="text" placeholder="Event name" required>
+        </div>
+        <div class="form-field">
+            <label for="description">Event Description</label>
+            <textarea name="description" required></textarea>
+        </div>
+
+        <div class="form-row">
+            <div class="form-field">
+                <label for="capacity">Maximum Participants</label>
+                <input name="capacity" type="number" min="1" required>
+            </div>
+            <div class="form-field">
+                <label for="start">Start Date & Time</label>
+                <input name="start" type="datetime-local" required>
+            </div>
+            <div class="form-field">
+                <label for="end">End Date & Time</label>
+                <input name="end" type="datetime-local" required>
+            </div>
+        </div>
+        
+
+        <button class="form-bttn-submit" type="submit">Create</button>
+    </form>
+
+{% endblock %}

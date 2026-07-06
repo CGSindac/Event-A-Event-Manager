@@ -1,0 +1,114 @@
+{% extends "layout.html "%}
+
+{% block body %}
+
+{% if errors %}
+        {% for key, value in errors.items() %}
+            {% if value == true %}
+            <div class="error-container">
+                <div class="error-notif">
+                     <p><i>Missing Value: {{ key }}</i></p>
+                </div>
+            </div> 
+            {% endif %}
+        {% endfor %}
+{% endif %}
+<h2>Manage Event</h2>
+{% if event_data %}
+    <form action="/update" method="post">
+        <div class="form-row">
+            <div class="form-column">
+                <div class="form-field">
+                <label for="event_name">Event Name: </label>
+                <input name="event_name" id="event_name" type="text", value="{{ event_data.name }}" autocomplete="off">
+                </div>
+                <p>Host/Organizer: {{ event_data.creator }}</p>
+                <div class="form-field">
+                    <label for="description">Event Description: </label>
+                    <textarea name="description" id="description"> {{ event_data.desc }} </textarea>
+                </div>
+            </div>
+            <div class="form-column">
+                <div class="form-field">
+                    <label for="start">Start date & time: </label>
+                    <input name="start" id="start"type="datetime-local" value="{{ event_data.start[0] }}">
+                </div>
+                <div class="form-field">
+                    <label for="end">End date & time: </label>
+                    <input name="end" id="end" type="datetime-local" value="{{ event_data.end[0] }}">
+                </div>
+                <div class="form-field">
+                    <label for="status">Event Status</label>
+                    <select name="status" id="status">
+                        {% for status in statuses %}
+                    
+                            {% if event_data.status == status %}
+                                <option value="{{ status }}" selected> {{ status }}</option>
+                            {% else %}
+                                <option value="{{ status }}"> {{ status }}</option>
+                            {% endif %}
+                    
+                        {% endfor %}
+                    </select>
+                </div>
+                <div>
+                    <button type="reset" class="form-bttn-reset">Cancel</button>
+                    <button type="submit" class="form-bttn-submit">Update</button>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+
+        <!-- Metadata for the event -->
+        <input name="creator_id" type="text" value="{{event_data.creator_id}}" hidden>        
+        <input name="capacity" value="{{event_data.capacity}}" hidden>
+        <input name="event_id" value="{{event_data.id}}" hidden>
+    </form>
+
+    <div class="form-row">
+        <div class="form-column-logs">
+            <h3>Participants [{{ participants.count }} / {{ event_data.capacity}}]</h3>
+            <div class="logs">
+                <ol class="list-group">
+                    {% for user in participants.participants %}
+                    <li class="list-group-item "> 
+                        <div class="data-container d-flex align-items-center">
+                            {{ user.username }}
+                            <form action="/kick" method="post">
+                            <input name="id" value="{{event_data.id}}" hidden>
+                            <input name="creator_id" value="{{event_data.creator_id}}" hidden>
+                            <input name="user_id" value="{{user.id}}" hidden>
+                            <button type="submit" class="form-bttn-reset">Kick</button>
+                            </form>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+        <div class="form-column-logs">
+            <h3>Event History</h3>
+                <div class="logs">
+                    <ul class="list-group">
+                    {% for log in logs%}
+                    {% if log.action == "Kicked" %}
+                    <li class="list-group-item" style="text-align: left;"><u>{{ log.username }}</u> got kicked from {{event_data.name}} - {{log.timestamp}}</li>
+                    {% else %}
+                    <li class="list-group-item" style="text-align: left;"><u>{{ log.username }}</u>  {{ log.action }} {{event_data.name}} - {{log.timestamp}}</li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+
+    
+{% else %}
+NO DATA
+{% endif %}
+
+{% endblock %}

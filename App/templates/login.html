@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block body%}
+<div class="login-register">
+    <div class="login-register-body">
+        <h2 class="login-register-header">Login</h2>
+        <p class="login-register-subtext">Don't have an account? <a href="/register">Register</a></p>
+        <form action="/login" method="post">
+            <div class="form-field">
+                <label for="username">Username</label>
+                <input name="username" type="text" id="username" autocomplete="off" placeholder="Spongebob">
+            </div>
+            <div class="form-field">
+                <label for="password">Password</label>
+                <input name="password" id="password" type="password" placeholder="Password">
+            </div>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</div>
+
+<div class="title" style="margin-top: 40px;">
+    <h1 style="font-family: monospace; font-size: 4rem; color: lightsalmon;">Event-<span style="color: lightskyblue;">A</span></h1>
+</div>
+{% endblock %}

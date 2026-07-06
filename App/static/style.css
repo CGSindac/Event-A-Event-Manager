@@ -1,0 +1,298 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+body{
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+
+    font-family: "Roboto", sans-serif;
+    background-color: #f9f9f9;
+}
+
+main{
+    overflow-x: auto;
+    scrollbar-width: thin;
+}
+
+
+
+/* Login & Register */
+
+
+.login-register-body{
+    background-color: #eeede9;
+    border: 2px solid #7ba5ff;
+    display: inline-block;
+
+    border-radius: 10px;
+    box-shadow: 0px 10px 10px 2px #54c6ffad;
+    padding: 10px;
+    min-width: 250px;
+
+    transition: all 0.1s ease;
+}
+
+.login-register-body:hover{
+    box-shadow: 0px 20px 20px 4px #006da8ad;
+}
+
+.login-register-header{
+    text-align: center;
+    font-size: 40px;
+}
+
+.login-register-subtext{
+    text-align: center;
+    font-size: 15px;
+    margin-bottom: 20px;
+    
+}
+
+.login-register-subtext a{
+    text-decoration: none;
+    color: rgb(41, 126, 200);
+}
+
+/* FORMS */
+.form-field{
+    margin: 10px 0;
+    transition: all 0.2s ease;
+    border-radius: 6px;
+}
+.form-field:hover{
+    background-color: #d1d1d1;
+}
+
+.form-row{
+    width: 100%;
+
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap ;
+
+    margin-bottom: 10px;
+}
+
+.form-column{
+    border-radius: 6px;
+    padding: 5px;
+    width: 45%;
+    min-width: 300px;
+
+    display: flex;
+    flex-direction: column;
+
+    transition: all 0.3s ease;
+}
+
+
+
+.form-column-logs{
+    border-radius: 6px;
+    padding: 5px;
+    width: 45%;
+    min-width: 300px;
+
+    display: flex;
+    flex-direction: column;
+
+    transition: all 0.3s ease;
+}
+
+.form-column-logs:hover{
+    background-color: #cbcbcb;
+
+    transition: all 0.3s ease;
+}
+.logs{
+    height: 200px;
+    border-radius: 7px;
+    overflow-y: auto;
+    scrollbar-width: thin; 
+}
+
+
+
+.form-field input{
+    width: 100%;                  
+    padding: 12px 16px;           
+    font-size: 16px;              
+    color: #333333;               
+    background-color: #f9f9f9;    
+    border: 2px solid #e0e0e0;    
+    border-radius: 6px;           
+    outline: none;                
+    transition: all 0.3s ease;   
+}
+.form-field input:focus{
+  background-color: #ffffff;    /* Brightens background for active contrast */
+  border-color: #4a90e2;        /* Vibrant blue border highlight */
+  box-shadow: 0 0 8px rgba(74, 144, 226, 0.2); /* Soft ambient outer glow */
+}
+
+.form-field input::placeholder{
+    color: #aaaaaa; 
+}
+
+.form-field textarea{   
+  
+  width: 100%;
+  height: 150px;
+  padding: 12px;
+  box-sizing: border-box; /* Includes padding & border in total width/height */
+  
+  /* Typography */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333333;
+  
+  /* Visual Appearance */
+  background-color: #f8f9fa;
+  border: 2px solid #ced4da;
+  border-radius: 6px;
+
+
+  resize: vertical; /* Allows vertical stretching but locks horizontal width */
+  outline: none; /* Removes the default browser focus ring */
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.form-field textarea:focus{
+  background-color: #ffffff;    /* Brightens background for active contrast */
+  border-color: #4a90e2;        /* Vibrant blue border highlight */
+  box-shadow: 0 0 8px rgba(74, 144, 226, 0.2); /* Soft ambient outer glow */
+}
+
+.form-field select {
+  padding: 8px 16px;
+  border: 2px solid #3b82f6;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #1f2937;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Style the open dropdown menu box */
+
+
+
+.form-field label{
+    margin-bottom: 3px;
+    font-size: 12px;
+    color: #333333;
+}
+
+.login-register-body form button{
+    float: right;
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: 2px solid #e0e0e0;   
+    outline: none;
+    margin-top: 10px;
+
+    transition: 0.2s ease;
+}
+
+.login-register-body form button:hover{
+    border-color: #4a90e2;
+    color: #4a90e2;    
+    cursor: pointer;
+    outline: none;
+    margin-top: 10px;
+}
+
+.form-bttn-submit{
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: 2px solid #e0e0e0;   
+    outline: none;
+
+    transition: 0.2s ease;
+}
+
+.form-bttn-submit:hover{
+    border-color: #4a90e2;
+    color: #4a90e2;    
+    cursor: pointer;
+    outline: none;
+}
+
+.form-bttn-reset{
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: 2px solid #e0e0e0;   
+    outline: none;
+
+    transition: 0.2s ease;
+}
+
+.form-bttn-reset:hover{
+    border-color: #e24a4a;
+    color: #e24a4a;    
+    cursor: pointer;
+    outline: none;
+
+}
+
+.data-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.data-container p{
+    display: inline-block;
+    height: 100%;
+    background-color: #4a90e2;
+}
+
+.logs{
+    max-height: 300px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+/* ERROR Design*/
+
+.error-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: #3b83f600;
+}
+
+.error-notif{
+    
+    margin-top: 50px;
+    display: inline-block;
+    padding: 10px;
+
+    background-color: #ced4da;
+    border: 2px solid #454545;
+
+    border-radius: 6px;
+
+    transition: all 0.2s ease-in;
+}
+
+.error-notif:hover{
+    
+    margin-top: 50px;
+    display: inline-block;
+    
+    scale: 1.1;
+    background-color: #ff9191;
+    border: 2px solid #9f0000;
+
+    border-radius: 6px;
+
+    transition: all 0.2s ease-in;
+}

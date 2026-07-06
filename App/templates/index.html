@@ -1,0 +1,96 @@
+{% extends "layout.html "%}
+
+{% block body %}
+
+    <h1>Joined Events</h1>
+    <table class="table table-striped table-cell-padding-x-sm">
+        <thead>
+            <tr>
+                <th>Event name</th>
+                <th>Description</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if joined_events %}
+            {% for event in joined_events%}
+            <tr>
+                <td> {{event.name }}
+                    {% if event.status == "Open" %}
+                    <span class="badge text-bg-success"> {{event.status}}</span>
+                    {% endif %}    
+                    {% if event.status == "Ongoing" %}
+                    <span class="badge text-bg-warning"> {{event.status}}</span>
+                    {% endif %}  
+
+                    {% if event.status == "Closed" %}
+                    <span class="badge text-bg-danger"> {{event.status}}</span>
+                    {% endif %}  
+                </td>
+                <td> {{event.desc}} </td>
+                <td>
+                    <form action="/leave" method="post">
+                        <input name="user_id" type="text" value=" {{ session['user_id'] }}"  hidden>
+                        <input name="event_id" type="text" value=" {{event.id}} " hidden>
+                        <button  class="btn btn-danger" type="submit">Leave</button>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"> {{event.start[1]}} - {{event.end[1]}}</td>
+                <td> {{ event.attendees}} / {{event.capacity}} Participants</td>
+            </tr>
+            {% endfor %}
+            {% else %}
+                <tr class="table-info">
+                    <td colspan="3"> No Joined Events</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+    <h1>My Events</h1>
+    <table class="table table-striped table-cell-padding-x-sm">
+        <thead>
+            <tr>
+                <th>Event name</th>
+                <th>Description</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if created_events %}
+            {% for event in created_events %}
+            <tr>
+                <td> {{event.name }}
+                    {% if event.status == "Open" %}
+                    <span class="badge text-bg-success"> {{event.status}}</span>
+                    {% endif %}    
+                    {% if event.status == "Ongoing" %}
+                    <span class="badge text-bg-warning"> {{event.status}}</span>
+                    {% endif %}  
+
+                    {% if event.status == "Closed" %}
+                    <span class="badge text-bg-danger"> {{event.status}}</span>
+                    {% endif %}  
+                </td>
+                <td> {{event.desc}} </td>
+                <td>
+                    <form action="/manage" method="post">
+                        <input name="id" type="text" value=" {{event.id}} " hidden>
+                        <button  class="btn btn-success" type="submit">Manage</button>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"> {{event.start[1]}} - {{event.end[1]}}</td>
+                <td> {{ event.attendees}} / {{event.capacity}} Participants</td>
+            </tr>
+            {% endfor %}
+            {% else %}
+                <tr class="table-info">
+                    <td colspan="3">No created Events</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+{% endblock %}
