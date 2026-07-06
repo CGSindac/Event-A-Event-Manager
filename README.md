@@ -39,7 +39,7 @@ __Pre-requisites:__ Python, Git, Pip
 1. Clone or Download the repository
 
 ```bash
-git clone
+git clone https://github.com/CGSindac/Event-A-Event-Manager
 ```
 
 2. Initialize and activate virtual environment
